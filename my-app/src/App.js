@@ -3,19 +3,28 @@ import './App.css';
 import React, {useState} from "react"
 import axios from "axios";
 
-
 function App() {
   const[value,setValue] = React.useState("");
+  const[appeal,setAppeal] = React.useState("");
+  const[temp,setTemp] = React.useState("");
+
   var obj = {}
   const json = (text) =>{
     setValue(text)
-    obj={"name":text}
-    console.log(obj)
+  }
+
+  const skill = (text) =>{
+    setAppeal(text)
   }
 
   const tuusin = () =>{
-    const res = axios.post('/user', obj)
-    console.log(res);
+    obj={"gitname":value,"appeal":appeal}
+    console.log(obj)
+    axios.post('http://6997-126-157-115-175.ngrok.io/', obj).then(res => {
+    setTemp(res.data.point);
+    console.log(temp);
+    })
+  
   }
 
   return (
@@ -25,9 +34,15 @@ function App() {
             <input
              value={value}
              onChange = {event => json(event.target.value)}  />
-             <input type="button" value="(submit)" onClick={tuusin} /> 
-          </form>
 
+            <input type="button" value="(submit)" onClick={tuusin} />
+          </form> 
+          <form>
+            <input
+             value={appeal}
+             onChange = {event => skill(event.target.value)}  />
+          </form>
+          <h1> {temp} </h1>
     </div>
   );
 }
