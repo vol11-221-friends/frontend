@@ -28,15 +28,28 @@ function App() {
 
   return (
     <div className="App">
-      <form>
-        <textarea
-          value={value}
-          onChange={(event) => json(event.target.value)}
-        />
-        <input value={appeal} onChange={(event) => skill(event.target.value)} />
-        <input type="button" value="(submit)" onClick={tuusin} />
+      <form className="form">
+        <div className="appealForm">
+          <div>自己アピール</div>
+          <textarea
+            className="appealtextarea"
+            value={value}
+            rows="4"
+            cols="30"
+            onChange={(event) => json(event.target.value)}
+          />
+        </div>
+        <div className="username">
+          <div>githubのユーザー名</div>
+          <input
+            className="inputuser"
+            value={appeal}
+            onChange={(event) => skill(event.target.value)}
+          />
+          <input type="button" value="submit" onClick={tuusin} />
+        </div>
       </form>
-      <h1> {temp} </h1>
+      <h1 className="score"> Score:{temp} </h1>
     </div>
   );
 }
