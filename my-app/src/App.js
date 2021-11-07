@@ -27,7 +27,14 @@ function App() {
   };
 
   return (
+   
     <div className="App">
+      <header style= {{textAlign:"center", height: 40, padding:20, background:"#CCFFFF"}}>
+        <h2 style = {{color: 'black'}}>
+        221の下痢ゲリラ
+        </h2>
+      </header>
+      
       <form className="form">
         <div className="appealForm">
           <div>自己アピール</div>
@@ -50,6 +57,8 @@ function App() {
         </div>
       </form>
       <h1 className="score"> Score:{temp} </h1>
+
+ 
     </div>
   );
 }
